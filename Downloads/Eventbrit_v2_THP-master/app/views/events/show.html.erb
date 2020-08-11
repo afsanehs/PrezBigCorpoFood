@@ -1,0 +1,14 @@
+<div class="cardShowEvent" > 
+  <div class="card border-secondary mb-3 text-center">
+    <div class="card-header border-secondary Show"><%= @event.title %></div>
+    <div class="card-body Show">
+      <h4 class="card-title"><%= @event.start_date.strftime("%d %B %Y")%></h4>
+      <p class="card-text">Le prix de cet événement sera de <%= @event.price %> euro</p>
+    </div>
+  </div>
+</div>
+
+<div class="text-center" style="margin: 10px 0">
+  <%= link_to "Revenir à l'accueil", root_path, class: 'btn btn-outline-warning btn-sm', style: 'margin-right: 10px' %>
+  <%= link_to "Créer votre event", new_event_path, class: 'btn btn-outline-danger btn-sm' %>
+</div>

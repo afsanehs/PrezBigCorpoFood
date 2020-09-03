@@ -1,1 +1,3 @@
-https://git.heroku.com/puuuurfect.git
+Lien vers app Heroku :
+
+https://puuurfect.herokuapp.com

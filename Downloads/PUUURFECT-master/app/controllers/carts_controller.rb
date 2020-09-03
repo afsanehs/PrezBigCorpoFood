@@ -1,30 +1,25 @@
 class CartsController < ApplicationController
-  
-  def index
-    @carts = Cart.all
-  end
+  before_action :authenticate_user!, only: [:show]
+  before_action :is_your_cart, only: [:show]
 
   def show
-    @cart = Carts.find(params[:id])
-  end
-
-  def new
-  end
-
-  def create
-    @cart = Cart.create
-  end
-
-  def edit
-  end
-
-  def update
     @cart = Cart.find(params[:id])
-    @cart.update
+
+    @cart_items = CartItem.where(cart_id: params[:id])
+    
+    @total_price = 0
+    @cart_items.each do |element|
+      @total_price = element.item.price  + @total_price
+    end
   end
 
-  def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
+  def is_your_cart
+    if Cart.find(params[:id]).user_id != current_user.id
+      flash[:error] = "Hmmm, ce n'est pas ton panier...."
+      redirect_to root_path
+    end
   end
+  
 end
+
+

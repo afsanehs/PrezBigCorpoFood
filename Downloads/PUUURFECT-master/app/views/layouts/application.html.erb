@@ -1,68 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Puuurfect</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <head>
+        <title>Puuurfect</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  </head>
+    </head>
 
   
-<header>
-<!-----NAVBAR------>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">PUUURFECT</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <header>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
+        <!-----NAVBAR------>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+              <%= link_to "PUUURFECT", root_path, :class => "navbar-brand" %>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
 
-        <a class="nav-item text-light"><%= link_to "Accueil", root_path, :class => "nav-item nav-link" %></a>
-        <a class="nav-item text-light"><%= link_to "La Team", team_index_path, :class => "nav-item nav-link" %></a>
-        <a class="nav-item text-light"><%= link_to "Contact", contact_index_path, :class => "nav-item nav-link" %></a>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <%= link_to "Accueil", root_path, :class => "nav-item nav-link" %>
+              <%= link_to "La Team", root_path, :class => "nav-item nav-link" %>
+              <%= link_to "Contact", root_path, :class => "nav-item nav-link" %>
+            </div>
+          </div>
 
-      <span>
-
-        <% if user_signed_in? %>
-        <div class="btn-group position-right" role="group" aria-label="Button group with nested dropdown">
-        <button type="button" class="btn btn-danger-right"><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></button>
-          <button type="button" class="btn btn-outline-danger-right"><%= link_to "Voir mon profil", user_path(:id => current_user.id) %></button> 
+          <% if user_signed_in? %>
+          <div class="navbar-nav cart">
+              <%= link_to "Voir mon panier", cart_path(user_id: current_user.id, id: Cart.where(user_id: current_user.id).last), :class => "nav-item nav-link" %>
+          </div>    
+          <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon compte utilisateur</a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                  <%= link_to "Mon profil", user_path(:id => current_user.id), :class => "dropdown-item" %>
+                  <%= link_to "Mes commandes", user_path(:id => current_user.id), :class => "dropdown-item" %>
+                  <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => "dropdown-item" %>
+              </div>
           <% end %>
           <% if !user_signed_in? %>
-          <a class="btn btn-danger dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                S'inscrire / Se connecter</a>
-              <div class="dropdown-menu dropdown-menu position-right" aria-labelledby="dropdownMenuLink">
-                <%= link_to "S'inscrire", new_user_registration_path, :class => "dropdown-item" %>
-                <%= link_to "Se connecter", new_user_session_path, :class => "dropdown-item" %>
+              <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">S'inscrire / Se connecter</a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                  <%= link_to "S'inscrire", new_user_registration_path, :class => "dropdown-item" %>
+                  <%= link_to "Se connecter", new_user_session_path, :class => "dropdown-item" %>
               </div>
-        <% end %>
+          <% end %>
+          </div>
+        </nav>
+    </header>
 
-        </div>
-    </ul>
-  </div>
-</nav>
-</header>
-<body>
+      <body class="d-flex flex-column">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-     
-      <%= yield %>
+        <div id="page-content">
 
+                    <%= yield %>
+
+        </div>
       </body>
       
 <!-------FOOTER------->      
 
-  <body>
-<%= yield%>
-  </body>
+
   
-  <footer class="container fixed-bottom" id="footer">
+  <footer class="container-fluid" id="footer">
     <div class="row">
       <div class="col-lg-12">
         <ul class="list-unstyled">
@@ -70,8 +75,10 @@
           <li><a href="#">Twitter</a></li>
           <li><a href="#">Facebook</a></li>
           <li><a href="#">Contact</a></li>
+          <li><%= link_to "Admin", admin_root_path %></li>
+          
         </ul>
-        <p>Fait avec :heart: en Purr-Programming par <a href="index.html"> 🤘 La Team 🎵 SpotiTube 🤘 aka (c) The FelixSlaves 2020</a>.</p>
+        <p>Fait avec ❤️ en Purr-Programming par <a href="index.html"> 🤘 La Team 🎵 SpotiTube 🤘 aka (c) The FelixSlaves 2020</a>.</p>
       </div>
     </div>
   </footer>

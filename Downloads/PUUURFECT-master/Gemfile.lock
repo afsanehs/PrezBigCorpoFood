@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 35ec5ed4e8a7f7477a6583a8de9a70256d4192a2
+  revision: b194dd23bb4cf9f151e6f680e1ea243737d747e1
   branch: master
   specs:
     faker (2.13.0)
@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: https://github.com/stripe/stripe-ruby
-  revision: e1ae307e603cd5a618f73f394119942a1539571e
+  revision: 0620436d63a40af8bdc93057c1cdb4e58bf1a30a
   specs:
-    stripe (5.24.0)
+    stripe (5.25.0)
 
 GEM
   remote: https://rubygems.org/
@@ -43,10 +43,6 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.2.4.3)
       activesupport (= 5.2.4.3)
-    activemodel-serializers-xml (1.0.2)
-      activemodel (> 5.x)
-      activesupport (> 5.x)
-      builder (~> 3.1)
     activerecord (5.2.4.3)
       activemodel (= 5.2.4.3)
       activesupport (= 5.2.4.3)
@@ -62,9 +58,38 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    administrate (0.14.0)
+      actionpack (>= 4.2)
+      actionview (>= 4.2)
+      activerecord (>= 4.2)
+      autoprefixer-rails (>= 6.0)
+      datetime_picker_rails (~> 0.0.7)
+      jquery-rails (>= 4.0)
+      kaminari (>= 1.0)
+      momentjs-rails (~> 2.8)
+      sassc-rails (~> 2.1)
+      selectize-rails (~> 0.6)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    autoprefixer-rails (9.8.6.3)
+      execjs
+    aws-eventstream (1.1.0)
+    aws-partitions (1.364.0)
+    aws-sdk-core (3.105.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.37.0)
+      aws-sdk-core (~> 3, >= 3.99.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.79.1)
+      aws-sdk-core (~> 3, >= 3.104.3)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.15)
     bindex (0.8.1)
     bootsnap (1.4.8)
@@ -92,6 +117,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
+    datetime_picker_rails (0.0.7)
+      momentjs-rails (>= 2.8.1)
     devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -104,20 +131,16 @@ GEM
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    haml (5.1.2)
-      temple (>= 0.8.0)
-      tilt
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    jmespath (1.4.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (6.0.1)
-      railties (>= 3.2.16)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.1)
@@ -147,20 +170,17 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
+    momentjs-rails (2.20.1)
+      railties (>= 3.1)
     msgpack (1.3.3)
-    nested_form (0.3.2)
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    parslet (2.0.0)
     pg (1.2.3)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     puma (3.12.6)
     rack (2.2.3)
-    rack-pjax (1.1.0)
-      nokogiri (~> 1.5)
-      rack (>= 1.1)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.4.3)
@@ -181,18 +201,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
-    rails_admin (2.0.2)
-      activemodel-serializers-xml (>= 1.0)
-      builder (~> 3.1)
-      haml (>= 4.0, < 6)
-      jquery-rails (>= 3.0, < 5)
-      jquery-ui-rails (>= 5.0, < 7)
-      kaminari (>= 0.14, < 2.0)
-      nested_form (~> 0.3)
-      rack-pjax (>= 0.7)
-      rails (>= 5.0, < 7)
-      remotipart (~> 1.3)
-      sassc-rails (>= 1.3, < 3)
     railties (5.2.4.3)
       actionpack (= 5.2.4.3)
       activesupport (= 5.2.4.3)
@@ -205,7 +213,6 @@ GEM
       ffi (~> 1.0)
     ref (2.0.0)
     regexp_parser (1.7.1)
-    remotipart (1.4.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -230,6 +237,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selectize-rails (0.12.6)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -245,14 +253,12 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     table_print (1.5.7)
-    temple (0.8.2)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    trollop (2.9.10)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -272,15 +278,13 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yarn (0.1.1)
-      parslet (>= 1.2)
-      rack (>= 1.3)
-      trollop (>= 1.16)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  administrate
+  aws-sdk-s3
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
@@ -295,7 +299,6 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.3)
-  rails_admin (~> 2.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
@@ -307,7 +310,6 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  yarn
 
 RUBY VERSION
    ruby 2.5.1p57
